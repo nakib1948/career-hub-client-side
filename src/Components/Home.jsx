@@ -7,7 +7,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import man from "../assets/Images/man.png";
 import "./Home.css";
-import image1 from "../assets/Icons/accounts 1.png"
+import image1 from "../assets/Icons/accounts 1.png";
+import image2 from "../assets/Icons/business 1.png";
+import image3 from "../assets/Icons/social-media 1.png";
+import image4 from "../assets/Icons/chip 1.png";
+import test from "../assets/Images/google-1-1 1.png"
+import PlaceIcon from '@mui/icons-material/Place';
+import PaidIcon from '@mui/icons-material/Paid';
 import { CardGroup, Card } from "react-bootstrap";
 const Home = () => {
   const cardData = [
@@ -17,17 +23,17 @@ const Home = () => {
       text: "300 Jobs Available",
     },
     {
-      imgSrc: "https://via.placeholder.com/150",
+      imgSrc: image2,
       title: "Creative Design",
       text: "100+ Jobs Available",
     },
     {
-      imgSrc: "https://via.placeholder.com/150",
+      imgSrc: image3,
       title: "Marketing & Sales",
       text: "150 Jobs Available",
     },
     {
-      imgSrc: "https://via.placeholder.com/150",
+      imgSrc: image4,
       title: "Engineering Job",
       text: "224 Jobs Available",
     },
@@ -55,7 +61,7 @@ const Home = () => {
       <Container className="second-section mb-5">
         <Row className="align-items-center">
           <Col sm={6}>
-            <h1 >
+            <h1>
               One step <br /> Closer to your{" "}
               <span className="text-primary">Dream job</span>{" "}
             </h1>
@@ -76,26 +82,69 @@ const Home = () => {
 
       <h1 className="text-center">Job Category List</h1>
       <p className="text-center">
-        {" "}
         <small>
           Explore thousands of job opportunities with all the information you
           need. Its your future
-        </small>{" "}
+        </small>
       </p>
 
-      <div className="card-group-container">
-      {cardData.map((card, index) => (
-        <Card key={index} className="card no-border text-center p-3">
-          <img style={{marginLeft:'60px'}} height='50px' width='50px'  src={card.imgSrc} />
-          <Card.Body>
-            <Card.Title>{card.title}</Card.Title>
-            <Card.Text>{card.text}</Card.Text>
-         
-          </Card.Body>
-        </Card>
-      ))}
-    </div>
-     
+      <div className="card-group-container my-5">
+        {cardData.map((card, index) => (
+          <Card key={index} className="card no-border text-center p-3">
+            <img
+              style={{ marginLeft: "60px" }}
+              height="50px"
+              width="50px"
+              src={card.imgSrc}
+            />
+            <Card.Body>
+              <Card.Title>{card.title}</Card.Title>
+              <Card.Text>{card.text}</Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
+
+      <h1 className="text-center">Featured Jobs</h1>
+      <p className="text-center">
+        <small>
+          Explore thousands of job opportunities with all the information you
+          need. Its your future
+        </small>
+      </p>
+      <Container>
+        <Row xs={1} md={2} className="g-4">
+          {Array.from({ length: 4 }).map((_, idx) => (
+            <Col>
+              <Card className="p-3">
+              <img
+           
+              height="60px"
+              width="120px"
+              src={test}
+             />
+                <Card.Body>
+                  <Card.Title>Technical Database Engineer</Card.Title>
+                  <Card.Text>
+                  Google LLC
+                  </Card.Text>
+                  <div className="d-flex mb-3">
+                  <Button style={{marginRight:'15px'}} variant="outline-primary">Primary</Button>
+                  <Button variant="outline-primary">Primary</Button>
+                 
+                  </div>
+                  <p> <PlaceIcon/> Dhaka, Bangladesh <PaidIcon/> Salary : 100K - 150K</p>
+                  <Button variant="primary">View Details</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+        <div className="d-flex justify-content-center mt-3">
+         <Button  variant="primary">See all jobs</Button>
+
+        </div>
     </>
   );
 };
