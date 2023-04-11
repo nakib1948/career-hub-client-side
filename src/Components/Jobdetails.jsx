@@ -4,14 +4,18 @@ const Jobdetails = () => {
     const [alldata,setalldata]=useState([])
     const [singledata,setSingledata]=useState([])
     const {id}= useParams();
+   
     useEffect(()=>{
-        fetch('data.json')
+        fetch('/data.json')
         .then(res=>res.json())
         .then(data=>{
             setalldata(data)
         })
        },[])
-
+    
+    
+    const finddata=alldata.find(data=> data.id=== parseInt(id))
+    setSingledata(finddata)
     return (
         <div>
             <h1>Job details</h1>
