@@ -1,0 +1,18 @@
+.second-section{
+    background-color: rgb(246, 251, 251);
+}
+.card-group-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px;
+   
+  }
+  
+  .card {
+    margin: 10px;
+  }
+  .no-border {
+    border: none;
+    background-color: rgb(246, 251, 251);
+  }
