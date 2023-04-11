@@ -37,7 +37,7 @@ const Home = () => {
     setalljobs(true)
    }
    
-   console.log(data)
+  // console.log(data)
   const cardData = [
     {
       imgSrc: image1,
@@ -69,6 +69,7 @@ const Home = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mx-auto">
+            <Nav.Link href="#features">Home</Nav.Link>
               <Nav.Link href="#features">Statistics</Nav.Link>
               <Nav.Link href="#pricing">Applied Jobs</Nav.Link>
               <Nav.Link href="#pricing">Blog</Nav.Link>

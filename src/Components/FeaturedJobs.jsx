@@ -6,9 +6,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import PlaceIcon from '@mui/icons-material/Place';
 import PaidIcon from '@mui/icons-material/Paid';
+import { useNavigate } from 'react-router-dom';
 const FeaturedJobs = (props) => {
-   
+    
     let data=props.data
+    const navigate=useNavigate()
+    const viewdetails=(id)=>{
+        navigate(`jobdetails/${id}`)
+    }
 
     return (
 
@@ -35,7 +40,7 @@ const FeaturedJobs = (props) => {
                  
                   </div>
                   <p> <PlaceIcon/> {data[idx].address} <PaidIcon/> Salary : {data[idx].salary}</p>
-                  <Button variant="primary">View Details</Button>
+                  <Button onClick={()=>viewdetails(data[idx].id)} variant="primary">View Details</Button>
                 </Card.Body>
               </Card>
             </Col>
