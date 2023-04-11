@@ -1,6 +1,7 @@
 [
     {
         "id":1,
+        "joblocation":"remote",
         "companyLogo": "../src/assets/Logo/google-1-1 1.png",
         "jobTitle": "Marketing Manager",
         "companyName": "Acme Corp.",
@@ -15,6 +16,7 @@
       },
       {
         "id":2,
+        "joblocation":"onsite",
         "companyLogo": "../src/assets/Images/CareerHub.png",
         "jobTitle": "Accountant",
         "companyName": "Financial Services Co.",
@@ -29,6 +31,7 @@
       },
       {
         "id":3,
+        "joblocation":"remote",
         "companyLogo": "../src/assets/Images/tesla-9 1.png",
         "jobTitle": "Web Developer",
         "companyName": "Digital Agency",
@@ -43,6 +46,7 @@
       },
       {
         "id":4,
+        "joblocation":"onsite",
         "companyLogo": "../src/assets/Images/netflix-4 1.png",
         "jobTitle": "Software Engineer",
         "companyName": "Tech Giant",
@@ -57,6 +61,7 @@
       },
       {
         "id":5,
+        "joblocation":"remote",
         "companyLogo": "../src/assets/Images/Vector-1.png",
         "jobTitle": "Human Resources Manager",
         "companyName": "Manufacturing Co.",
@@ -71,6 +76,7 @@
       },
       {
         "id":6,
+        "joblocation":"onsite",
         "companyLogo": "../src/assets/Images/Group 10021.png",
         "jobTitle": "Graphic Designer",
         "companyName": "Creative Agency",
@@ -85,6 +91,7 @@
       },
       {
         "id":7,
+        "joblocation":"remote",
         "companyLogo": "../src/assets/Images/Vector.png",
         "jobTitle": "Sales Manager",
         "companyName": "Retail Co.",
@@ -99,6 +106,7 @@
       },
       {
         "id":8,
+        "joblocation":"onsite",
         "companyLogo": "../src/assets/Logo/google-1-1 1-1.png",
         "jobTitle": "Customer Service Representative",
         "companyName": "E-commerce Co.",

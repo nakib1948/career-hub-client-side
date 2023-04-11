@@ -15,7 +15,29 @@ import test from "../assets/Images/google-1-1 1.png"
 import PlaceIcon from '@mui/icons-material/Place';
 import PaidIcon from '@mui/icons-material/Paid';
 import { CardGroup, Card } from "react-bootstrap";
+import { useEffect, useState } from "react";
+import FeaturedJobs from "./FeaturedJobs";
 const Home = () => {
+
+  const [data,setdata]=useState([])
+  const [alldata,setalldata]=useState([])
+  const [alljobs,setalljobs]=useState(true)
+  useEffect(()=>{
+    fetch('data.json')
+    .then(res=>res.json())
+    .then(data=>{
+        setdata(data.slice(0,4))
+        setalldata(data)
+    })
+   },[])
+   let allJobs=()=>{
+     setalljobs(false)
+   }
+   let fourJobs=()=>{
+    setalljobs(true)
+   }
+   
+   console.log(data)
   const cardData = [
     {
       imgSrc: image1,
@@ -112,37 +134,18 @@ const Home = () => {
           need. Its your future
         </small>
       </p>
-      <Container>
-        <Row xs={1} md={2} className="g-4">
-          {Array.from({ length: 4 }).map((_, idx) => (
-            <Col>
-              <Card className="p-3">
-              <img
-           
-              height="60px"
-              width="120px"
-              src={test}
-             />
-                <Card.Body>
-                  <Card.Title>Technical Database Engineer</Card.Title>
-                  <Card.Text>
-                  Google LLC
-                  </Card.Text>
-                  <div className="d-flex mb-3">
-                  <Button style={{marginRight:'15px'}} variant="outline-primary">Primary</Button>
-                  <Button variant="outline-primary">Primary</Button>
-                 
-                  </div>
-                  <p> <PlaceIcon/> Dhaka, Bangladesh <PaidIcon/> Salary : 100K - 150K</p>
-                  <Button variant="primary">View Details</Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      </Container>
+     
+
+       {
+          alljobs ? <FeaturedJobs data={data}/> : <FeaturedJobs data={alldata}/>
+       }
+
         <div className="d-flex justify-content-center mt-3">
-         <Button  variant="primary">See all jobs</Button>
+            {
+                alljobs ?  <Button onClick={allJobs}  variant="primary">See all jobs</Button>:
+                <Button onClick={fourJobs}  variant="primary">See less</Button>
+            }
+        
 
         </div>
     </>
