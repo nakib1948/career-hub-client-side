@@ -70,7 +70,7 @@ const Home = () => {
       <Container className="second-section mb-5">
         <Row className="align-items-center">
           <Col sm={6}>
-            <h1>
+            <h1 className="display-3">
               One step <br /> Closer to your{" "}
               <span className="text-primary">Dream job</span>{" "}
             </h1>
@@ -127,7 +127,7 @@ const Home = () => {
           alljobs ? <FeaturedJobs data={data}/> : <FeaturedJobs data={alldata}/>
        }
 
-        <div className="d-flex justify-content-center mt-3">
+        <div className="d-flex justify-content-center mt-3 mb-5">
             {
                 alljobs ?  <Button onClick={allJobs}  variant="primary">See all jobs</Button>:
                 <Button onClick={fourJobs}  variant="primary">See less</Button>

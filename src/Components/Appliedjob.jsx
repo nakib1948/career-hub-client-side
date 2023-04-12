@@ -11,11 +11,12 @@ import PlaceIcon from "@mui/icons-material/Place";
 import Button from "react-bootstrap/Button";
 import Navbarr from "./Navbarr";
 import "./Appliedjob.css";
+import { useNavigate } from "react-router-dom";
 const Appliedjob = () => {
     const [Data, setData] = useState([]);
     const [filteredData, setFilteredData] = useState([]);
     const [check, setCheck] = useState(false);
-  
+    const navigate=useNavigate()
     useEffect(() => {
       async function fetchData() {
         const res = await fetch("/data.json");
@@ -56,6 +57,9 @@ const Appliedjob = () => {
             setFilteredData(Data);
           }
       }
+      const viewdetails=(id)=>{
+        navigate(`/jobdetails/${id}`)
+    }
 
   return (
     <div>
@@ -102,7 +106,7 @@ const Appliedjob = () => {
                   </div>
 
                   <div className="appliedjob1">
-                    <Button variant="primary">View Details</Button>
+                    <Button onClick={()=>viewdetails(job.id)} variant="primary">View Details</Button>
                   </div>
                 </div>
               </Col>
