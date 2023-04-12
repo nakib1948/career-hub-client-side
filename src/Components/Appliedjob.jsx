@@ -30,12 +30,9 @@ const Appliedjob = () => {
               if (i === j.id) arr.push(j);
             }
           }
-          setData(data);
+          setData(arr);
           setFilteredData(arr);
-        } else {
-          setData(data);
-          setFilteredData(data);
-        }
+        } 
       }
       fetchData();
     }, []);
