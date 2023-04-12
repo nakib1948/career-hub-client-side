@@ -10,6 +10,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PlaceIcon from '@mui/icons-material/Place';
 import Button from "react-bootstrap/Button";
+import Navbarr from "./Navbarr";
 const Jobdetails = () => {
   const [alldata, setalldata] = useState([]);
   const [singledata, setSingledata] = useState({});
@@ -28,8 +29,18 @@ const Jobdetails = () => {
     fetchData();
   }, [id]);
 
+  const storeid=(id)=>{
+    const storedIds = JSON.parse(localStorage.getItem("storedIds")) || [];
+    if (!storedIds.includes(id)) {
+      const updatedIds = [...storedIds, id];
+      localStorage.setItem("storedIds", JSON.stringify(updatedIds));
+    }
+  }
+
   return (
     <div>
+
+        <Navbarr/>
       <h1 className="text-center mt-5 mb-5">Job details</h1>
 
       <Container className="mt-5">
@@ -58,17 +69,17 @@ const Jobdetails = () => {
                 <Card.Title>Job Details</Card.Title>
                 <hr />
                 <Card.Text>
-                  <p><PaidIcon/> Salary: 100K - 150K (Per Month)</p>
-                  <p><WorkOutlineIcon/> Job Title : Product Designer</p>
-                  <p>Contact Information</p>
+                  <p><PaidIcon/> Salary: {singledata.salary}</p>
+                  <p><WorkOutlineIcon/> Job Title : {singledata.jobTitle}</p>
+                  <p>Contact Information:</p>
                   <hr />
-                  <p><LocalPhoneIcon/> Phone: 01750-00 00 00</p>
-                  <p><MailOutlineIcon/> Email: info@gmail.com</p>
-                  <p><PlaceIcon/> Address: Dhanmondi 32, Sukrabad Dhaka, Bangladesh</p>
+                  <p><LocalPhoneIcon/> Phone: {singledata.phone}</p>
+                  <p><MailOutlineIcon/> Email: {singledata.email}</p>
+                  <p><PlaceIcon/> Address: {singledata.address}</p>
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Button className='mt-3 w-100' variant="primary">Apply Now</Button>
+            <Button onClick={()=>storeid(singledata.id)} className='mt-3 w-100' variant="primary">Apply Now</Button>
 
           </Col>
         </Row>

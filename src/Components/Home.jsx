@@ -17,6 +17,8 @@ import PaidIcon from '@mui/icons-material/Paid';
 import { CardGroup, Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import FeaturedJobs from "./FeaturedJobs";
+import { Link } from "react-router-dom";
+import Navbarr from "./Navbarr";
 const Home = () => {
 
   const [data,setdata]=useState([])
@@ -63,23 +65,7 @@ const Home = () => {
 
   return (
     <>
-      <Navbar collapseOnSelect className="p-3" expand="lg" bg="light">
-        <Container>
-          <h1>Jobspot</h1>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="mx-auto">
-            <Nav.Link href="#features">Home</Nav.Link>
-              <Nav.Link href="#features">Statistics</Nav.Link>
-              <Nav.Link href="#pricing">Applied Jobs</Nav.Link>
-              <Nav.Link href="#pricing">Blog</Nav.Link>
-            </Nav>
-            <Nav>
-              <Button variant="primary">Star Applying</Button>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+      <Navbarr/>
 
       <Container className="second-section mb-5">
         <Row className="align-items-center">
