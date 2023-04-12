@@ -18,7 +18,7 @@ const Navbarr = () => {
               <Link to="/blog" className="text-decoration-none px-2">Blog</Link>
             </Nav>
             <Nav>
-              <Button variant="primary">Star Applying</Button>
+              <Button variant="primary">Start Applying</Button>
             </Nav>
           </Navbar.Collapse>
         </Container>

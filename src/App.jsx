@@ -8,6 +8,7 @@ import Jobdetails from './Components/Jobdetails';
 import Appliedjob from './Components/Appliedjob';
 import Blog from './Components/Blog';
 import Statistics from './Components/Statistics';
+import Notfound from './Components/Notfound';
 function App() {
  
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/appliedjobs" element={<Appliedjob />}/>
         <Route path="/blog" element={<Blog />}/>
         <Route path="/statistics" element={<Statistics />}/>
+        <Route path='*' element={<Notfound/>}/>
       </Routes>
   )
 }
