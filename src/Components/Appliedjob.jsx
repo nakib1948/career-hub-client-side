@@ -4,81 +4,106 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import PaidIcon from "@mui/icons-material/Paid";
-import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+
 import PlaceIcon from "@mui/icons-material/Place";
 import Button from "react-bootstrap/Button";
 import Navbarr from "./Navbarr";
+import "./Appliedjob.css";
 const Appliedjob = () => {
-  const [Data, setData] = useState([]);
-
-  const [check, setCheck] = useState(false);
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch("/data.json");
-      const data = await res.json();
-
-      const item = await JSON.parse(localStorage.getItem("storedIds"));
-      let arr = [];
-      if (item && item.length) {
-        // check if item exists and has length
-        let arr = [];
-        for (let i of item) {
-          for (let j of data) {
-            if (i === j.id) arr.push(j);
+    const [Data, setData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
+    const [check, setCheck] = useState(false);
+  
+    useEffect(() => {
+      async function fetchData() {
+        const res = await fetch("/data.json");
+        const data = await res.json();
+  
+        const item = await JSON.parse(localStorage.getItem("storedIds"));
+        if (item && item.length) {
+          let arr = [];
+          for (let i of item) {
+            for (let j of data) {
+              if (i === j.id) arr.push(j);
+            }
           }
+          setData(data);
+          setFilteredData(arr);
+        } else {
+          setData(data);
+          setFilteredData(data);
         }
-        setData(data);
       }
-    }
-    fetchData();
-  }, []);
+      fetchData();
+    }, []);
+
+    const onsite = () => {
+        if (Data.length) {
+          const allonsite = Data.filter((data) => data.joblocation === "onsite");
+          setFilteredData(allonsite);
+        }
+      };
+      const remote = () => {
+        if (Data.length) {
+          const allremote = Data.filter((data) => data.joblocation === "remote");
+          setFilteredData(allremote);
+        }
+      };
+      const All=()=>{
+        if (Data.length) {
+            setFilteredData(Data);
+          }
+      }
 
   return (
     <div>
-
-      <Navbarr/>
+      <Navbarr />
       <h1 className="text-center mt-5 mb-5">Applied Jobs</h1>
-      {Data.length && (
+      <Container className="text-end">
+        <DropdownButton id="dropdown-item-button" variant="secondary" title="Filter by">
+          <Dropdown.Item onClick={onsite} as="button">Onsite</Dropdown.Item>
+          <Dropdown.Item onClick={remote} as="button">Remote</Dropdown.Item>
+          <Dropdown.Item onClick={All} as="button">All</Dropdown.Item>
+          
+        </DropdownButton>
+      </Container>
+      {filteredData.length  && (
         <Container>
           <Row xs={1} md={1} className="g-4">
-            {Array.from({ length: Data.length }).map((_, idx) => (
+            {filteredData.map((job) => (
               <Col>
-                <div className="d-flex justify-content-around p-5 m-3 bg-light align-items-center">
-                 
-                    <div>
-                      <img
-                        height="60px"
-                        width="120px"
-                        src={Data[idx].companyLogo}
-                      />
+                <div className="d-flex appliedjob justify-content-around p-5 m-3 bg-light align-items-center">
+                  <div className="appliedjob1">
+                    <img
+                      height="60px"
+                      width="120px"
+                      src={job.companyLogo}
+                    />
+                  </div>
+                  <div className="appliedjob1">
+                    <Card.Title>{job.jobTitle}</Card.Title>
+                    <Card.Text>{job.companyName}</Card.Text>
+                    <div className="d-flex mb-3">
+                      <Button
+                        style={{ marginRight: "15px" }}
+                        variant="outline-primary"
+                      >
+                        {job.joblocation}
+                      </Button>
+                      <Button variant="outline-primary">Full time</Button>
                     </div>
-                    <div >
-                      
-                        <Card.Title>{Data[idx].jobTitle}</Card.Title>
-                        <Card.Text>{Data[idx].companyName}</Card.Text>
-                        <div className="d-flex mb-3">
-                          <Button
-                            style={{ marginRight: "15px" }}
-                            variant="outline-primary"
-                          >
-                            {Data[idx].joblocation}
-                          </Button>
-                          <Button variant="outline-primary">Full time</Button>
-                        </div>
-                        <p>
-                          {" "}
-                          <PlaceIcon /> {Data[idx].address} <PaidIcon /> Salary
-                          : {Data[idx].salary}
-                        </p>
-                     
-                    </div>
+                    <p>
+                      {" "}
+                      <PlaceIcon /> {job.address} <PaidIcon /> Salary :{" "}
+                      {job.salary}
+                    </p>
+                  </div>
 
-                    <div >
-                      <Button variant="primary">View Details</Button>
-                    </div>
-                 
+                  <div className="appliedjob1">
+                    <Button variant="primary">View Details</Button>
+                  </div>
                 </div>
               </Col>
             ))}
